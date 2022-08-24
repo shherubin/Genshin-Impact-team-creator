@@ -1,50 +1,64 @@
+import org.w3c.dom.ls.LSOutput;
+
+import javax.crypto.spec.PSource;
 import java.nio.channels.SelectableChannel;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Team {
 
     private static Object Character;
     private static Object List;
-
+    private static Scanner stdin = new Scanner(System.in);
 
     public static void teamCreator() {
 
         List<Character> selectedRoster = new ArrayList<>();
+
+        String userInput = "";
+
         Character emptySlot = new Character("","","","");
 
         System.out.println("Welcome to Genshin Impact. Please select a team of 4 adventurers.");
-        characterCreation(selectedRoster).add(emptySlot);
+
+        List<Character> availableRoster = characterCreation();
+        printTeam(availableRoster);
+        System.out.println("Enter the character name to join the party.");
+        userInput = stdin.nextLine();
+        findCharacter(userInput, availableRoster);
         printTeam(selectedRoster);
         elementalResonance(selectedRoster);
     }
 
 
 
-    private static List<Character> characterCreation(List<Character> hereComesBennet) {
+    private static List<Character> characterCreation() {
 
         List<Character> availableRoster = new ArrayList<>();
-        Character bennet = new Character("Bennet", "", "pyro", "sword" );
-        Character yelan = new Character("Yelan", "", "hydro", "bow");
-        Character kokomi = new Character("Kokomi", "Sangonomiya", "hydro", "catalyst");
+        Character bennet = new Character("Bennet", " ", "pyro", "sword" );
+        Character yelan = new Character("Yelan", " ", "hydro", "bow");
+        Character kokomi = new Character("Kokomi", " Sangonomiya", "hydro", "catalyst");
         Character keqing = new Character("Keqing", "", "electro", "sword");
+        Character razor = new Character("Razor", " ", "electro", "claymore");
         availableRoster.add(bennet);
         availableRoster.add(yelan);
         availableRoster.add(kokomi);
         availableRoster.add(keqing);
-
+        availableRoster.add(razor);
 
         return availableRoster;
     }
 
-    private static void printTeam(List<Character> teamComp) {
-        for (int i = 0; i < teamComp.size(); i++) {
-            System.out.println(teamComp);
+    private static void printTeam(List<Character> characterList) {
+        for (int i = 0; i < characterList.size(); i++) {
+            System.out.println(characterList.get(i));
         }
     }
 
-    private static List<String> elementalResonance(List<Character> teamComposition) {
+    private static void elementalResonance(List<Character> teamComposition) {
         List<String> elementResonance = new ArrayList();
         int pyro = 0, hydro = 0, electro = 0, cryo = 0, anemo = 0, geo = 0;
 
@@ -96,6 +110,14 @@ public class Team {
                 }
             }
         }
-        //no return statement
+    }
+    private static Character findCharacter(String firstName, List<Character> characterList) {
+        Character emptyCharacterModel = new Character("", "", "", "");
+
+        for (int i = 0; i < characterList.size(); i++) {
+            emptyCharacterModel = (characterList.get(i).getFirstName().equalsIgnoreCase(firstName)) {
+                 return characterList.get(i).toString();
+             }
+        }
     }
 }
