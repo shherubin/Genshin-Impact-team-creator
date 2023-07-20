@@ -17,32 +17,42 @@ public class Team {
     public static void teamCreator() {
 
         List<Character> selectedRoster = new ArrayList<>();
-
-        String userInput = "";
-
-        Character emptySlot = new Character("","","","");
-
-        System.out.println("Welcome to Genshin Impact. Please select a team of 4 adventurers.");
-
         List<Character> availableRoster = characterCreation();
+        String userInput = "";
+        Character empty = new Character();
+
+
+        System.out.println("Welcome to Genshin Impact");
         printTeam(availableRoster);
-        System.out.println("Enter the character name to join the party.");
-        userInput = stdin.nextLine();
-        findCharacter(userInput, availableRoster);
+        findCharacter(availableRoster);
         printTeam(selectedRoster);
         elementalResonance(selectedRoster);
     }
 
+    private static Character findCharacter(List availableRoster ) {
+        String input = "";
+        Character selectedCharacter = new Character();
+        System.out.println("Please select the first member of your team.");
+        input = stdin.nextLine();
+        for (int i = 0; i < availableRoster.size(); i++) {
+            if(input.equalsIgnoreCase(availableRoster.get(i).getFirstName()) {
+            }
+        }
+
+        return selectedCharacter;
+    }
 
 
     private static List<Character> characterCreation() {
 
         List<Character> availableRoster = new ArrayList<>();
-        Character bennet = new Character("Bennet", " ", "pyro", "sword" );
-        Character yelan = new Character("Yelan", " ", "hydro", "bow");
-        Character kokomi = new Character("Kokomi", " Sangonomiya", "hydro", "catalyst");
-        Character keqing = new Character("Keqing", "", "electro", "sword");
-        Character razor = new Character("Razor", " ", "electro", "claymore");
+
+        Character bennet = new Character("Bennet ", " ", "pyro", "sword" );
+        Character yelan = new Character("Yelan ", " ", "hydro", "bow");
+        Character kokomi = new Character("Kokomi ", "Sangonomiya", "hydro", "catalyst");
+        Character keqing = new Character("Keqing ", "", "electro", "sword");
+        Character razor = new Character("Razor ", " ", "electro", "claymore");
+
         availableRoster.add(bennet);
         availableRoster.add(yelan);
         availableRoster.add(kokomi);
@@ -111,13 +121,6 @@ public class Team {
             }
         }
     }
-    private static Character findCharacter(String firstName, List<Character> characterList) {
-        Character emptyCharacterModel = new Character("", "", "", "");
 
-        for (int i = 0; i < characterList.size(); i++) {
-            emptyCharacterModel = (characterList.get(i).getFirstName().equalsIgnoreCase(firstName)) {
-                 return characterList.get(i).toString();
-             }
-        }
-    }
+
 }

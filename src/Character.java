@@ -12,6 +12,10 @@ public class Character {
         this.weapon = weapon;
     }
 
+    public Character() {
+
+    }
+
     public String getFirstName() {
         return firstName;
     }
